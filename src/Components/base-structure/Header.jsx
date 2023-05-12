@@ -1,38 +1,37 @@
-import React, { useState } from 'react'
-import {Box, Container} from '@mui/material'
-import Logo from '../../assets/base-structure/Logo.png'
-import PersonIcon from '@mui/icons-material/Person';
-import SearchIcon from '@mui/icons-material/Search';
-import '../../styles/base-structure/Header.scss'
+import React, { useContext } from "react";
+import Logo from "../../assets/base-structure/Logo.png";
+import PersonIcon from "@mui/icons-material/Person";
+import SearchIcon from "@mui/icons-material/Search";
+import * as styles from "./header.module.scss";
+import CardContext from "../../utils/CardContext";
 
-const Header = () => {
-    const [searchInput, setSearchInput] = useState("")
 
-    const handleChange = (event) => {
-    setSearchInput(event.target.value);
-    console.log(searchInput);
-  };
+const Header = ({}) => {
+  const { searchTerm, handleSearch } = useContext(CardContext);
+  const { cartItems } = useContext(CardContext);
 
   return (
-   <Container>
-     <Box className="nav-wrapper">
-        <Box className="nav-logo">
-            <img src={Logo}/>
-        </Box>
-        <Box className="nav-search">
-            <SearchIcon/>
-            <input 
-            type="text" 
-            placeholder='Search Here ...' 
-            value={searchInput} 
-            onChange={handleChange}/>
-        </Box>
-        <Box>
-            <PersonIcon/>
-        </Box>
-    </Box>
-   </Container>
-  )
-}
+    <>
+      <div className={styles.wrap}>
+        <div className={styles.logo}>
+          <img src={Logo} />
+        </div>
+        <div className={styles.search}>
+          <SearchIcon />
+          <input
+            type="text"
+            placeholder="Search the Item"
+            value={searchTerm}
+            onChange={handleSearch}
+          />
+        </div>
+        <div>
+          <PersonIcon />
+          <p>Cart: {cartItems.length}</p>
+        </div>
+      </div>
+    </>
+  );
+};
 
-export default Header
+export default Header;

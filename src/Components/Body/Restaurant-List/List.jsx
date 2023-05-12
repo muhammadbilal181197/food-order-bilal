@@ -1,27 +1,28 @@
-import { Container, Box } from '@mui/material'
-import React from 'react'
-import Card from '../Restaurant-Card/Card'
-import '../../../styles/Body/Restaurant-List/List.scss'
-import cardsData from '../../../Data/CardsData'
+import React, { useContext } from "react";
+import Card from "../Restaurant-Card/Card";
+import * as styles from "./list.module.scss";
+import CardContext from "../../../utils/CardContext";
 
-const List = () => {
+const Cards = () => {
+  const { filteredCards } = useContext(CardContext);
+
+
   return (
-    <Container>
-        <Box className="listing-head">
-            Top Selling
-        </Box>
-        <Box className="List-wrapper">
-            {cardsData.map((content)=>{
-            return (
-            <Card
-            title={content.title}
-            description={content.description}
-            price={content.price}/>
-            )
-        })}
-        </Box>
-    </Container>
-  )
-}
+    <div className={styles.wrap}>
+      {filteredCards.length  ? (
+        filteredCards.map((value, i) => (
+          <Card
+            key={i}
+            name={value.name}
+            description={value.description}
+            price={value.price}
+          />
+        ))
+      ) : (
+        <p>No data found</p>
+      )}
+    </div>
+  );
+};
 
-export default List
+export default Cards;
