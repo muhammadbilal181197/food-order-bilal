@@ -5,7 +5,7 @@ const CardProvider = ({ children, cards }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredCards, setFilteredCards] = useState(cards);
   const [cartItems, setCartItems] = useState([]);
-  const [showCart, setShowCart] = useState(false);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
@@ -17,14 +17,17 @@ const CardProvider = ({ children, cards }) => {
 
   const handleAddToCart = (card) => {
     setCartItems([...cartItems, card]);
+    setTotalPrice(totalPrice + card.price);
   };
 
-  const handleShowCart = () => {
-    setShowCart(true);
-  };
-
-  const handleHideCart = () => {
-    setShowCart(false);
+  const handleRemoveFromCart = (id) => {
+    setCartItems((cartItems) => {
+      const index = cartItems.filter((item) => item.id === id);
+      const updatedItems = [...cartItems];
+      const removedItem = updatedItems.splice(index, 1)[0];
+      setTotalPrice((totalPrice) => totalPrice - removedItem.price);
+      return updatedItems;
+    });
   };
   const contextValue = {
     searchTerm,
@@ -32,8 +35,8 @@ const CardProvider = ({ children, cards }) => {
     filteredCards,
     handleAddToCart,
     cartItems,
-    handleShowCart,
-    handleHideCart,
+    handleRemoveFromCart,
+    totalPrice,
   };
 
   return (

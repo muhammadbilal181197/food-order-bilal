@@ -19,6 +19,7 @@ const Card = (props) => {
         <h2 className={styles.heading}>{name}</h2>
         <p className={styles.tagline}>{description}</p>
         <h3>Rs: {price}</h3>
+        
         <button onClick={handleClick} className={styles.btn}>
           Add to Cart
         </button>
