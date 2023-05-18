@@ -5,6 +5,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import * as styles from "./header.module.scss";
 import CardContext from "../../utils/CardContext";
 import { Navbar, Container, Nav, Badge, Modal, Button } from "react-bootstrap";
+import { useSelector } from "react-redux";
 
 const Header = ({}) => {
   const {
@@ -19,6 +20,8 @@ const Header = ({}) => {
 
   const handleClose = () => setShowCart(false);
   const handleShow = () => setShowCart(true);
+
+  const state = useSelector((state) => state.amount);
 
   return (
     <>
@@ -37,9 +40,10 @@ const Header = ({}) => {
         </div>
         <div className={styles.cartblock}>
           <ShoppingCartCheckoutIcon onClick={handleShow} />
-          <p className={styles.cart}>{cartItems.length}</p>
+          {/* <p className={styles.cart}>{cartItems.length}</p> */}
+          <Button disabled={true}>Items :{state}</Button>
 
-          <Modal show={showCart} onHide={handleClose}>
+          <Modal show={showCart} onHide={handleClose} centered>
             <Modal.Title>Cart Selected Items</Modal.Title>
             <Modal.Body>
               {cartItems.length === 0 ? (
