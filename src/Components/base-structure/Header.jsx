@@ -11,7 +11,7 @@ const Header = ({}) => {
   const {
     cartItems,
     totalPrice,
-    handleRemoveFromCart,
+    // handleRemoveFromCart,
     searchTerm,
     handleSearch,
   } = useContext(CardContext);
@@ -40,10 +40,16 @@ const Header = ({}) => {
         </div>
         <div className={styles.cartblock}>
           <ShoppingCartCheckoutIcon onClick={handleShow} />
-          {/* <p className={styles.cart}>{cartItems.length}</p> */}
+          <p className={styles.cart}>{cartItems.length}</p>
           <Button disabled={true}>Items :{state}</Button>
 
-          <Modal show={showCart} onHide={handleClose} centered>
+          <Modal
+            show={showCart}
+            onHide={handleClose}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+          >
             <Modal.Title>Cart Selected Items</Modal.Title>
             <Modal.Body>
               {cartItems.length === 0 ? (
@@ -51,11 +57,19 @@ const Header = ({}) => {
               ) : (
                 <>
                   {cartItems.map((card) => (
-                    <p key={card.id}>{card.name}</p>
+                    <div key={card.id} className={styles.cardblock}>
+                      <img
+                        src={card.icon}
+                        className={styles.icon}
+                        style={{ height: "100px", width: "100px" }}
+                      />
+                      <p>{`Food Name: ${card.name} || Food Price: ${card.price}`}</p>
+                      <p></p>
+                    </div>
                   ))}
                   <p>Total Price: {totalPrice}</p>
 
-                  <button onClick={handleRemoveFromCart}>Remove Last</button>
+                  {/* <button onClick={handleRemoveFromCart}>Remove Last</button> */}
                 </>
               )}
             </Modal.Body>

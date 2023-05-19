@@ -13,9 +13,10 @@ const Cards = () => {
         filteredCards.map((value, i) => (
           <Card
             key={i}
-            name={value.name}
-            description={value.description}
-            price={value.price}
+            icon={value?.icon}
+            name={value?.name}
+            description={value?.description}
+            price={value?.price}
           />
         ))
       ) : (

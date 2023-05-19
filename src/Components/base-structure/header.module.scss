@@ -34,3 +34,17 @@
     }
   }
 }
+:global {
+  .modal-dialog {
+    height: 300px;
+    overflow: scroll;
+    background: linear-gradient(
+      131.75deg,
+      #0e0e0e 3.09%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    max-width: 1200px;
+    margin: auto;
+    padding: 10px;
+  }
+}
