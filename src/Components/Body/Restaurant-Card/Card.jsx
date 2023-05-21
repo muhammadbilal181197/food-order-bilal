@@ -7,9 +7,10 @@ import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../../../state";
+import { Link } from "react-router-dom";
 
 const Card = (props) => {
-  const { icon, name, price, description } = props;
+  const { id, icon, name, price, description, style } = props;
   const { handleAddToCart } = useContext(CardContext);
 
   const handleClick = () => {
@@ -20,11 +21,13 @@ const Card = (props) => {
 
   return (
     <div className={styles.wrap}>
-      <div className={styles.outer}>
-        <img src={icon} alt="" className={styles.icon} />
-        <h2 className={styles.heading}>{name}</h2>
-        <p className={styles.tagline}>{description}</p>
-        <h3>Rs: {price}</h3>
+      <div className={styles.outer} style={style}>
+        <Link key={id} style={{ textDecoration: "none" }} to={`/cards/${id}`}>
+          <img src={icon} alt="" className={styles.icon} />
+          <h2 className={styles.heading}>{name}</h2>
+          <p className={styles.tagline}>{description}</p>
+          <h3 style={{ color: "white" }}>Rs: {price}</h3>
+        </Link>
 
         <div className={styles.btnblock}>
           <button onClick={handleClick} className={styles.btn}>

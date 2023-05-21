@@ -9,6 +9,8 @@
       min-height: 80px;
       margin: 0;
       margin-top: 10px;
+      color: white;
+      text-decoration: none !important;
     }
     .icon {
       max-width: 300px;
@@ -17,6 +19,8 @@
     .tagline {
       min-height: 80px;
       margin: 0px;
+      color: white;
+      text-decoration: none !important;
     }
     .btnblock {
       display: flex;
@@ -47,7 +51,6 @@
           color: black;
           font-weight: 600;
           cursor: pointer;
-
         }
       }
     }

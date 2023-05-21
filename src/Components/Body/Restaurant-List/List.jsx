@@ -6,13 +6,13 @@ import CardContext from "../../../utils/CardContext";
 const Cards = () => {
   const { filteredCards } = useContext(CardContext);
 
-
   return (
     <div className={styles.wrap}>
-      {filteredCards.length  ? (
-        filteredCards.map((value, i) => (
+      {filteredCards.length ? (
+        filteredCards.map((value) => (
           <Card
-            key={i}
+            key={value.id}
+            id={value?.id}
             icon={value?.icon}
             name={value?.name}
             description={value?.description}
