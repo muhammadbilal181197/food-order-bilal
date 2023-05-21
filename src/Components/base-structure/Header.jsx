@@ -6,6 +6,7 @@ import * as styles from "./header.module.scss";
 import CardContext from "../../utils/CardContext";
 import { Navbar, Container, Nav, Badge, Modal, Button } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import User from "../User";
 
 const Header = ({}) => {
   const {
@@ -32,25 +33,33 @@ const Header = ({}) => {
         <div className={styles.search}>
           <SearchIcon />
           <input
+            style={{ color: "white" }}
             type="text"
             placeholder="Search the Item"
             value={searchTerm}
             onChange={handleSearch}
           />
         </div>
-        <div className={styles.cartblock}>
-          <ShoppingCartCheckoutIcon onClick={handleShow} />
-          <p className={styles.cart}>{cartItems.length}</p>
-          <Button disabled={true}>Items :{state}</Button>
 
+        <div className={styles.cartblock}>
+          <ShoppingCartCheckoutIcon
+            style={{ color: "white" }}
+            onClick={handleShow}
+          />
+          <p className={styles.cart} style={{ color: "white" }}>
+            {cartItems.length}
+          </p>
+          <Button disabled={true}>Items :{state}</Button>
           <Modal
             show={showCart}
             onHide={handleClose}
-            size="lg"
+            size="md"
             aria-labelledby="contained-modal-title-vcenter"
             centered
           >
-            <Modal.Title>Cart Selected Items</Modal.Title>
+            <Modal.Title style={{ textAlign: "Center" }}>
+              Cart Selected Items
+            </Modal.Title>
             <Modal.Body>
               {cartItems.length === 0 ? (
                 <p>No items in cart</p>
@@ -81,6 +90,7 @@ const Header = ({}) => {
             </Modal.Footer>
           </Modal>
         </div>
+        <User />
       </div>
     </>
   );

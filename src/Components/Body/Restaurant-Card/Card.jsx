@@ -22,7 +22,16 @@ const Card = (props) => {
   return (
     <div className={styles.wrap}>
       <div className={styles.outer} style={style}>
-        <Link key={id} style={{ textDecoration: "none" }} to={`/cards/${id}`}>
+        <Link
+          key={id}
+          style={{
+            textDecoration: "none",
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+          to={`/cards/${id}`}
+        >
           <img src={icon} alt="" className={styles.icon} />
           <h2 className={styles.heading}>{name}</h2>
           <p className={styles.tagline}>{description}</p>

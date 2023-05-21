@@ -10,17 +10,13 @@ const CardDetailPage = () => {
     padding: "10px",
     width: "100%",
     maxWidth: "500px",
-    alignItems: "center",
   };
 
   const card = cardsData.find((card) => card.id === Number(id));
-  console.log('id parameter:', id);
-  // console.log('card ids:', cardsData.map(card => card.id));
-  // console.log('selected card:', card);
 
   return (
     <div>
-      <h2 style={{ textAlign: "center" }}>Card Detail Page</h2>
+      <h2 style={{ textAlign: "center", color: "white" }}>Card Detail Page</h2>
       {card ? (
         <div
           style={{

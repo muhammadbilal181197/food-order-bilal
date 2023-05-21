@@ -4,6 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: black;
   .search {
     display: flex;
     align-items: center;
@@ -36,14 +37,9 @@
 }
 :global {
   .modal-dialog {
-    height: 300px;
-    overflow: scroll;
-    background: linear-gradient(
-      131.75deg,
-      #0e0e0e 3.09%,
-      rgba(0, 0, 0, 0) 100%
-    );
-    max-width: 1200px;
+    // height: 300px;
+
+    // max-width: 1200px;
     margin: auto;
     padding: 10px;
   }
